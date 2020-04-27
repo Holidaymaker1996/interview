@@ -118,13 +118,47 @@ def mergeTwoLists2(l1, l2):
     return res.next
 
 
-
+# 数组先升序再降序，找前后相同？
+def same(list):
+    n = len(list)
+    count = 0
+    p, q = 0, n - 1
+    for i in range(n-1):
+        if list[i] == list[i+1]:
+            a = i
+            break
+        if list[i] > list[i+1]:
+            a = i
+            break
+    print(a, 'a')
+    for i in range(len(list)-1):
+        print(list[i], '进入循环')
+        if i == a:
+            break
+        if list[p] == list[q]:
+            count += 1
+            print(list[p], '相等')
+            p += 1
+            q -= 1
+        if list[p] < list[q]:
+            print('p', list[p], 'q', list[q], '小于')
+            p += 1
+            # i -= 1
+        if list[p] > list[q]:
+            print('p', list[p], 'q', list[q], '大于')
+            q -= 1
+            # i -= 1
+    print(count)
+    return count
 
 if __name__ == '__main__':
     # lengthOfLongestSubstring("abcabcda")
     # s = 'ac'
     # demo(s)
-    prime(3, 10000)
+    # prime(3, 10000)
+    list = [1, 2, 3, 4, 3, 2]
+    same(list)
+
 
 
 # 海量数据处理 - 10亿个数中找出最大的10000个数（top K问题）
